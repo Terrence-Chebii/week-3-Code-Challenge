@@ -25,5 +25,27 @@ main{
 }
 main li:hover{
     transition: .4s;
-    transform: scale(1.02);
+}
+
+#button{
+    border-radius: 30%;
+    border: 2px solid rgb(60, 190, 190);
+}
+
+#button:hover{
+    transition: .4s;
+    transform: scale(1.1);
+    background-color: rgb(60, 190, 190);
+    border: 1px solid gray;
+}
+
+#delete{
+    background-color: red;
+    border-radius: 30%;
+    border: 2px solid rgb(60, 190, 190);
+    margin: 5px;
+}
+#delete:hover{
+    transition: .4s;
+    transform: scale(1.2);
 }

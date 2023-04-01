@@ -1,4 +1,4 @@
-fetch('http://localhost:3000/films')
+fetch('http://localhost:3000/films/')
 .then((res) => res.json())
 .then((data) => displayNames(data))
 
@@ -25,11 +25,14 @@ function displayContent(content){
         <p id='items'>Available tickets${films.capacity}<br>
         screentime${films.showtime}<br>
         Duration: ${films.runtime}<br>
-        <button>Buy Ticket</button>
+        <button id='button'>Buy Ticket</button>
+        <button id='delete'>DELETE</button>
         `
         main.appendChild(list)
-        let btn = list.querySelector('button')
+        let btn = list.querySelector('#button')
         btn.addEventListener('click' , buyTicket)
+        let deleteMovie = list.querySelector('#delete')
+        deleteMovie.addEventListener('click' , deleteIt)
           
 
     function buyTicket(){
@@ -62,18 +65,16 @@ function displayContent(content){
         })
     }
 }
+    function deleteIt(){
+        fetch(`http://localhost:3000/films/${films.id}` , {
+            method : 'DELETE',
+            headers : {
+                'Content-Type' : 'application/json'
+            },
+        })
+    }
 })
 }
 
-// function buyTicket(films){
-//     let initial = films.capacity
-//     let final = initial--
-//     fetch('http://localhost:3000/films' , {
-//         method : 'PATCH',
-//         headers : {
-//             'Content-Type' : 'application/json'
-//         },
-//         body : JSON.stringify(final)
-//     })
-// }
+
 
