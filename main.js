@@ -1,4 +1,4 @@
-fetch('http://localhost:3000/films/')
+fetch('http://localhost:4000/films/')
 .then((res) => res.json())
 .then((data) => displayNames(data))
 
@@ -11,7 +11,7 @@ function displayNames(names){
 })
 }
 
-fetch('http://localhost:3000/films')
+fetch('http://localhost:4000/films')
 .then((res) => res.json())
 .then((data) => displayContent(data))
 
@@ -23,7 +23,7 @@ function displayContent(content){
         list.innerHTML = `
         <img src='${films.poster}'>
         <p id='items'>Available tickets${films.capacity}<br>
-        screentime${films.showtime}<br>
+        screentime :${films.showtime}<br>
         Duration: ${films.runtime}<br>
         <button id='button'>Buy Ticket</button>
         <button id='delete'>DELETE</button>
@@ -36,7 +36,7 @@ function displayContent(content){
           
 
     function buyTicket(){
-        if(films.capacity > -10){
+        if(films.capacity > 0){
         let remainingTickets = films.capacity  - 1
         let soldTickets = films.tickets_sold + 1
         let final = {
@@ -44,7 +44,7 @@ function displayContent(content){
             tickets_sold : soldTickets
         }
         
-        fetch(`http://localhost:3000/films/${films.id}` , {
+        fetch(`http://localhost:4000/films/${films.id}` , {
             method : 'PATCH',
             headers : {
                 'Content-Type' : 'application/json'
@@ -53,10 +53,10 @@ function displayContent(content){
         })
     }else{
         let soldOut = {
-            capacity : '30'
+            capacity : 'SOLD OUT !'
         }
 
-        fetch(`http://localhost:3000/films/${films.id}` , {
+        fetch(`http://localhost:4000/films/${films.id}` , {
             method : 'PATCH',
             headers : {
                 'Content-Type' : 'application/json'
@@ -66,7 +66,7 @@ function displayContent(content){
     }
 }
     function deleteIt(){
-        fetch(`http://localhost:3000/films/${films.id}` , {
+        fetch(`http://localhost:4000/films/${films.id}` , {
             method : 'DELETE',
             headers : {
                 'Content-Type' : 'application/json'
