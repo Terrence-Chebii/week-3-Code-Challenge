@@ -1,15 +1,4 @@
-fetch('http://localhost:4000/films/')
-.then((res) => res.json())
-.then((data) => displayNames(data))
 
-function displayNames(names){
-    names.forEach(films => {
-      let menu = document.querySelector('#list')
-      let display =document.createElement('li')
-      display.innerHTML = `${films.title}`
-      menu.appendChild(display)
-})
-}
 
 fetch('http://localhost:4000/films')
 .then((res) => res.json())
@@ -21,7 +10,7 @@ function displayContent(content){
         let main = document.querySelector('main')
         let list = document.createElement('li')
         list.innerHTML = `
-        <img src='${films.poster}'>
+        <img id='${films.id}'src='${films.poster}'>
         <p id='items'>Available tickets${films.capacity}<br>
         screentime :${films.showtime}<br>
         Duration: ${films.runtime}<br>
@@ -72,6 +61,18 @@ function displayContent(content){
                 'Content-Type' : 'application/json'
             },
         })
+    }
+    fetch('http://localhost:4000/films/')
+.then((res) => res.json())
+.then((data) => displayNames(data))
+
+    function displayNames(names){
+          let menu = document.querySelector('#list')
+          let display =document.createElement('li')
+          display.innerHTML = `
+          <a href='#${films.id}'>${films.title}</a>
+          `
+          menu.appendChild(display)
     }
 })
 }
