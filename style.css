@@ -41,6 +41,7 @@ ul{
     transform: scale(1.2);
     transition: .4s;
     background-color: aquamarine;
+    cursor: pointer;
 }
 
 #delete{
@@ -52,8 +53,16 @@ ul{
 #delete:hover{
     transform: scale(1.2);
     transition: .4s;
+    cursor: pointer;
 }
 
 main{
     width: 60%;
+}
+
+main p:hover{
+    transition: .4s;
+    transform: scale(1.1);
+    color: aquamarine;
+    cursor: pointer;
 }

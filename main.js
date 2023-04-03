@@ -15,7 +15,7 @@ function displayContent(films){
         <button id='button'>Buy Ticket</button>
         <button id='delete'>DELETE</button>
         <h4>${films.description}</h4>
-
+        </p>
         `
         let btn = main.querySelector('#button')
         btn.onclick = (event) => {
