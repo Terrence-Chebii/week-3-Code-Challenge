@@ -31,6 +31,11 @@ ul{
     text-align: left;
 }
 
+li:hover{
+    cursor: pointer;
+    color: aquamarine;
+}
+
 #button{
     border-radius: 30px;
     border: 1px solid aquamarine;
